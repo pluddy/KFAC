@@ -16,6 +16,8 @@ public class ImportForm extends JFrame{
     private JButton importItemsButton;
     private JButton backButton;
     public JPanel contentPane;
+    private JLabel importedBidders;
+    private JLabel importedItems;
 //    public JPanel contentPane;
 
     public ImportForm(){
@@ -38,8 +40,9 @@ public class ImportForm extends JFrame{
                         }
 
                         //This is where a real application would open the file.
-                        System.out.println("Opening: " + file.getName());
+                        importedBidders.setText("Opening: " + file.getName());
                         Auction.importBidders(file1);
+                        importedBidders.setText(importedBidders.getText() + "\n" + Auction.bidders.size() + " Bidders added");
                     } else {
                         System.out.println("Open command cancelled by user.");
                     }
@@ -58,12 +61,15 @@ public class ImportForm extends JFrame{
                         }
 
                         //This is where a real application would open the file.
-                        System.out.println("Opening: " + file.getName());
+                        importedItems.setText("Opening: " + file.getName());
                         Auction.importItems(file2);
+                        importedItems.setText(importedItems.getText() + "\n" + Auction.bidders.size() + " Items added");
                     } else {
                         System.out.println("Open command cancelled by user.");
                     }
                 } else if(e.getActionCommand().equalsIgnoreCase("Back")){
+                    importedBidders.setText("");
+                    importItemsButton.setText("");
                     Control.showMainMenu();
                 }
             }

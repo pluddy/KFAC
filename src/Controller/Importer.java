@@ -213,8 +213,13 @@ public class Importer {
             } else {
                 expressPay = false;
             }
+            nextIndex++;
+            String postPayMethod = "";
+            if(arr.length >= 12) {
+                 postPayMethod= arr[nextIndex];
+            }
 
-            Bidder temp = new Bidder(firstName,firstName2,lastName,fullName,tableName,tableID,bidderID,false,expressPay,"");
+            Bidder temp = new Bidder(firstName,firstName2,lastName,fullName,tableName,tableID,bidderID,false,expressPay,postPayMethod);
             bidders.put(bidderID, temp);
         }
 
