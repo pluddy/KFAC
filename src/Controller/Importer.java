@@ -34,13 +34,7 @@ public class Importer {
 			
 			String line = scan.nextLine();
 			String[] arr = line.split(",");
-            boolean goodLine = true;
-            try{
-                Integer.valueOf(arr[0]);
-            } catch (Exception e){
-                goodLine = false;
-            }
-            if(!goodLine || arr.length == 0){
+            if(arr.length == 0){
 				continue;
 			}
 			int nextIndex = 0;
@@ -125,13 +119,8 @@ public class Importer {
         while(scan.hasNext()){
             String line = scan.nextLine();
             String[] arr = line.split(",");
-            boolean goodLine = true;
-            try{
-                Integer.valueOf(arr[0]);
-            } catch (Exception e){
-                goodLine = false;
-            }
-            if(!goodLine || arr.length == 0){
+
+            if(arr.length == 0){
                 continue;
             }
             int nextIndex = 0;

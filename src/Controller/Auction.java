@@ -64,7 +64,12 @@ public class Auction {
         HashMap<Integer, Bidder> bidtemp = new HashMap<Integer, Bidder>();
         while(reader.hasNext()){
             Bidder temp = new Bidder();
-            int type = reader.next();
+            int type = 0;
+            try {
+                type = reader.next();
+            } catch(Exception e){
+                break;
+            }
             switch(type){
                 case XMLStreamConstants.START_DOCUMENT:
                     System.out.println("start");
@@ -125,8 +130,14 @@ public class Auction {
 
         HashMap<Integer, Item> itemtemp = new HashMap<Integer, Item>();
         while(reader.hasNext()){
+
             Item temp = new Item();
-            int type = reader.next();
+            int type = 0;
+            try {
+                type = reader.next();
+            } catch(Exception e){
+                break;
+            }
             switch(type){
                 case XMLStreamConstants.START_DOCUMENT:
                     System.out.println("start");
@@ -177,93 +188,101 @@ public class Auction {
         XMLOutputFactory factory = XMLOutputFactory.newInstance();
         XMLStreamWriter writer = factory.createXMLStreamWriter(os);
 
-        writer.writeStartDocument("1.0");
-        writer.writeStartElement("Bidders");
-        for(int id : bidders.keySet()){
-            Bidder temp = bidders.get(id);
-            writer.writeStartElement("Bidder");
-            writer.writeAttribute("id", String.valueOf(id));
+        if (bidders != null) {
 
-            writer.writeStartElement("firstName");
-            writer.writeCharacters(temp.getFirstName());
-            writer.writeEndElement();
 
-            writer.writeStartElement("firstName2");
-            writer.writeCharacters(temp.getFirstName2());
-            writer.writeEndElement();
+            writer.writeStartDocument("1.0");
+            writer.writeStartElement("Bidders");
+            for(int id : bidders.keySet()){
+                Bidder temp = bidders.get(id);
+                writer.writeStartElement("Bidder");
+                writer.writeAttribute("id", String.valueOf(id));
 
-            writer.writeStartElement("lastName");
-            writer.writeCharacters(temp.getLastName());
-            writer.writeEndElement();
+                writer.writeStartElement("firstName");
+                writer.writeCharacters(temp.getFirstName());
+                writer.writeEndElement();
 
-            writer.writeStartElement("fullName");
-            writer.writeCharacters(temp.getFullName());
-            writer.writeEndElement();
+                writer.writeStartElement("firstName2");
+                writer.writeCharacters(temp.getFirstName2());
+                writer.writeEndElement();
 
-            writer.writeStartElement("tableName");
-            writer.writeCharacters(temp.getTableName());
-            writer.writeEndElement();
+                writer.writeStartElement("lastName");
+                writer.writeCharacters(temp.getLastName());
+                writer.writeEndElement();
 
-            writer.writeStartElement("tableNumber");
-            writer.writeCharacters(String.valueOf(temp.getTableNumber()));
-            writer.writeEndElement();
+                writer.writeStartElement("fullName");
+                writer.writeCharacters(temp.getFullName());
+                writer.writeEndElement();
 
-            writer.writeStartElement("totalPurchase");
-            writer.writeCharacters(String.valueOf(temp.getTotalPurchase()));
-            writer.writeEndElement();
+                writer.writeStartElement("tableName");
+                writer.writeCharacters(temp.getTableName());
+                writer.writeEndElement();
 
-            writer.writeStartElement("paid");
-            writer.writeCharacters(String.valueOf(temp.isPaid()));
-            writer.writeEndElement();
+                writer.writeStartElement("tableNumber");
+                writer.writeCharacters(String.valueOf(temp.getTableNumber()));
+                writer.writeEndElement();
 
-            writer.writeStartElement("prepay");
-            writer.writeCharacters(String.valueOf(temp.isPrepay()));
-            writer.writeEndElement();
+                writer.writeStartElement("totalPurchase");
+                writer.writeCharacters(String.valueOf(temp.getTotalPurchase()));
+                writer.writeEndElement();
 
-            writer.writeStartElement("postPayMethod");
-            writer.writeCharacters(String.valueOf(temp.getPostPayMethod()));
-            writer.writeEndElement();
+                writer.writeStartElement("paid");
+                writer.writeCharacters(String.valueOf(temp.isPaid()));
+                writer.writeEndElement();
 
+                writer.writeStartElement("prepay");
+                writer.writeCharacters(String.valueOf(temp.isPrepay()));
+                writer.writeEndElement();
+
+                writer.writeStartElement("postPayMethod");
+                writer.writeCharacters(String.valueOf(temp.getPostPayMethod()));
+                writer.writeEndElement();
+
+                writer.writeEndElement();
+            }
             writer.writeEndElement();
+            writer.writeEndDocument();
         }
-        writer.writeEndElement();
-        writer.writeEndDocument();
+
 
 
         FileOutputStream os2 = new FileOutputStream(new File("./src/data/items_"+saveYear+".xml"));
         XMLStreamWriter writer2 = factory.createXMLStreamWriter(os2);
 
-        writer2.writeStartDocument("1.0");
-        writer2.writeStartElement("Items");
-        for(int id : items.keySet()){
-            Item temp = items.get(id);
-            writer2.writeStartElement("Item");
-            writer2.writeAttribute("id", String.valueOf(id));
+        if (items != null) {
+            writer2.writeStartDocument("1.0");
+            writer2.writeStartElement("Items");
+            for(int id : items.keySet()){
+                Item temp = items.get(id);
+                writer2.writeStartElement("Item");
+                writer2.writeAttribute("id", String.valueOf(id));
 
-            writer2.writeStartElement("itemName");
-            writer2.writeCharacters(temp.getItemName());
-            writer2.writeEndElement();
+                writer2.writeStartElement("itemName");
+                writer2.writeCharacters(temp.getItemName());
+                writer2.writeEndElement();
 
-            writer2.writeStartElement("donorName");
-            writer2.writeCharacters(temp.getDonorName());
-            writer2.writeEndElement();
+                writer2.writeStartElement("donorName");
+                writer2.writeCharacters(temp.getDonorName());
+                writer2.writeEndElement();
 
-            writer2.writeStartElement("value");
-            writer2.writeCharacters(String.valueOf(temp.getValue()));
-            writer2.writeEndElement();
+                writer2.writeStartElement("value");
+                writer2.writeCharacters(String.valueOf(temp.getValue()));
+                writer2.writeEndElement();
 
-            writer2.writeStartElement("winningBid");
-            writer2.writeCharacters(String.valueOf(temp.getValue()));
-            writer2.writeEndElement();
+                writer2.writeStartElement("winningBid");
+                writer2.writeCharacters(String.valueOf(temp.getValue()));
+                writer2.writeEndElement();
 
-            writer2.writeStartElement("bidderID");
-            writer2.writeCharacters(String.valueOf(temp.getValue()));
-            writer2.writeEndElement();
+                writer2.writeStartElement("bidderID");
+                writer2.writeCharacters(String.valueOf(temp.getValue()));
+                writer2.writeEndElement();
 
+                writer2.writeEndElement();
+            }
             writer2.writeEndElement();
+            writer2.writeEndDocument();
         }
-        writer2.writeEndElement();
-        writer2.writeEndDocument();
+
     }
 
     public static ArrayList getYears() {
