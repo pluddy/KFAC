@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="KFAC">
+    <output-path>$USER_HOME$/Desktop</output-path>
+    <root id="archive" name="KFAC.jar">
+      <element id="module-output" name="KFAC" />
+      <element id="library" level="project" name="pdfbox-app-1.8.8" />
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
+      </element>
+    </root>
+  </artifact>
+</component>
