@@ -14,6 +14,11 @@ public class Importer {
 
 	private static HashMap<Integer, Bidder> bidders;
 	private static HashMap<Integer, Item> items;
+    private static int year;
+
+    public int getYear() {
+        return year;
+    }
 
 	public static HashMap<Integer, Item> importItems(String filename){
 
@@ -38,7 +43,7 @@ public class Importer {
 				continue;
 			}
 			int nextIndex = 0;
-			int year = Integer.valueOf(arr[0]);
+			year = Integer.valueOf(arr[0]);
 			
 			nextIndex = 1;
 			int itemID = Integer.valueOf(arr[1]);
@@ -123,15 +128,19 @@ public class Importer {
             if(arr.length == 0){
                 continue;
             }
-            int nextIndex = 0;
+            int nextIndex=0;
+
+            year = Integer.valueOf(arr[nextIndex]);
+
+            nextIndex++;
 
             String firstName = arr[nextIndex];
 
-            nextIndex = 1;
+            nextIndex++;
 
             String firstName2 = arr[nextIndex];
 
-            nextIndex = 2;
+            nextIndex++;
             int count = 0;
             if(arr[nextIndex].startsWith("\"") && !arr[nextIndex].endsWith("\"")){
                 count = 1;

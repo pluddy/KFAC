@@ -34,6 +34,7 @@ public class Auction {
     public static void importBidders(String bidderfilename){
         Importer importer = new Importer();
         bidders = importer.importBidders(bidderfilename);
+        year = importer.getYear();
 
         try {
             save(year);
@@ -46,6 +47,7 @@ public class Auction {
     public static void importItems(String itemfilename){
         Importer importer = new Importer();
         items = importer.importItems(itemfilename);
+        year = importer.getYear();
 
         try {
             save(year);

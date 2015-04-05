@@ -22,15 +22,19 @@ public class MainMenu extends JFrame{
     private JButton importFilesButton;
     private JButton exitButton;
     public JPanel contentPane;
-    public JComboBox comboBox1;
+    public JComboBox yearComboBox;
     private JLabel noDonorFile;
     private JLabel noItemFile;
+    private JLabel yearLabel;
 
 
     public MainMenu() {
 
         noDonorFile.setVisible(false);
         noItemFile.setVisible(false);
+        yearLabel.setVisible(false);
+        yearComboBox.setVisible(false);
+
 
 
         ActionListener listener = new ActionListener() {
