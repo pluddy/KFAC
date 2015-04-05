@@ -43,7 +43,8 @@ public class ImportForm extends JFrame{
 
                         //This is where a real application would open the file.
                         importedBidders.setText("Opening: " + file.getName());
-                        Auction.importBidders(file1);
+                        String retMessage = Auction.importBidders(file1);
+                        importedBidders.setText(importedBidders.getText() + "\n" + retMessage);
                         importedBidders.setText(importedBidders.getText() + "\n" + Auction.bidders.size() + " Bidders added");
                     } else {
                         System.out.println("Open command cancelled by user.");
@@ -65,7 +66,8 @@ public class ImportForm extends JFrame{
 
                         //This is where a real application would open the file.
                         importedItems.setText("Opening: " + file.getName());
-                        Auction.importItems(file2);
+                        String retMessage = Auction.importItems(file2);
+                        importedItems.setText(importedItems.getText() + "\n" + retMessage);
                         importedItems.setText(importedItems.getText() + "\n" + Auction.bidders.size() + " Items added");
                     } else {
                         System.out.println("Open command cancelled by user.");

@@ -21,7 +21,7 @@ public class Control {
     static JFrame frameImport;
 
     public Control(){
-        frameMain = new JFrame("Kicks for a Cure Auction Manager (v0.4)");
+        frameMain = new JFrame("Kicks for a Cure Auction Manager (v0.41)");
         frameMain.setContentPane(new MainMenu().contentPane);
         frameMain.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frameMain.setBounds(X, Y, WIDTH, HEIGHT);

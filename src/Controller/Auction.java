@@ -31,9 +31,11 @@ public class Auction {
 
     }
 
-    public static void importBidders(String bidderfilename){
+    public static String importBidders(String bidderfilename){
         Importer importer = new Importer();
-        bidders = importer.importBidders(bidderfilename);
+        String retMessage = importer.importBidders(bidderfilename);
+        bidders = importer.getBidders();
+
         year = importer.getYear();
 
         try {
@@ -42,11 +44,14 @@ public class Auction {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        return retMessage;
     }
 
-    public static void importItems(String itemfilename){
+    public static String importItems(String itemfilename){
         Importer importer = new Importer();
-        items = importer.importItems(itemfilename);
+        String retMessage = importer.importItems(itemfilename);
+        items = importer.getItems();
         year = importer.getYear();
 
         try {
@@ -55,6 +60,8 @@ public class Auction {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        return retMessage;
     }
 
     public static void load(int year) throws Exception{
