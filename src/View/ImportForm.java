@@ -18,13 +18,14 @@ public class ImportForm extends JFrame{
     public JPanel contentPane;
     private JLabel importedBidders;
     private JLabel importedItems;
+    private String lastLocation;
 //    public JPanel contentPane;
 
     public ImportForm(){
         ActionListener listener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                final JFileChooser fc = new JFileChooser();
+                final JFileChooser fc = new JFileChooser(lastLocation);
                 if(e.getActionCommand().equalsIgnoreCase("Import Bidders")){
                     String file1 = "";
 
@@ -35,6 +36,7 @@ public class ImportForm extends JFrame{
                         File file = fc.getSelectedFile();
                         try {
                             file1 = file.getCanonicalPath();
+                            lastLocation = file.getCanonicalPath();
                         }catch (Exception e2){
                             e2.printStackTrace();
                         }
@@ -56,6 +58,7 @@ public class ImportForm extends JFrame{
                         File file = fc.getSelectedFile();
                         try {
                             file2 = file.getCanonicalPath();
+                            lastLocation = file.getCanonicalPath();
                         }catch (Exception e2){
                             e2.printStackTrace();
                         }
